@@ -28,7 +28,7 @@ def log_artifacts():
 
 def main():
     assert "MLFLOW_TRACKING_URI" in os.environ
-    #os.environ["MLFLOW_TRACKING_URI"] = "http://localhost:5000"
+    # os.environ["MLFLOW_TRACKING_URI"] = "http://localhost:5000"
 
     # Log artifacts
     run_id1 = log_artifacts()

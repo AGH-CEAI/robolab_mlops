@@ -56,7 +56,7 @@ services:
 # https://github.com/schmidma/optuna-mnist/blob/main/docker-compose.yml
   optuna-dashboard:
     image: ghcr.io/optuna/optuna-dashboard:v0.15.1
-    entrypoint: 
+    entrypoint:
       - /bin/sh
       - -c
       - |
