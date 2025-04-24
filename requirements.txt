@@ -1,0 +1,13 @@
+numpy
+optuna
+pandas
+xgboost
+scikit-learn
+mlflow
+matplotlib
+seaborn
+ipywidgets
+python-git
+optuna-dashboard
+pymysql
+cryptography

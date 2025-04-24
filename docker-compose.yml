@@ -1,0 +1,72 @@
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ~/mlops/data/postgres:/var/lib/postgresql/data
+
+  tracking-server:
+    build:
+      context: .
+      dockerfile: "${DOCKERFILE:-Dockerfile}"
+    depends_on:
+      - postgres
+    expose:
+      - "5000"
+    ports:
+      # MLflow UI is available at http://localhost:5000
+      - "5000:5000"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri postgresql://user:password@postgres:5432/db
+      --artifacts-destination /mlartifacts
+      --default-artifact-root http://localhost:5000/api/2.0/mlflow-artifacts/artifacts/experiments
+      --gunicorn-opts "--log-level debug"
+
+    volumes:
+      - ~/mlops/data/mlartifacts:/mlartifacts
+
+  client:
+    build:
+      context: .
+      dockerfile: "${DOCKERFILE:-Dockerfile}"
+    depends_on:
+      - tracking-server
+    environment:
+      MLFLOW_TRACKING_URI: http://tracking-server:5000
+
+  optuna-mysql:
+    image: docker.io/mysql:8.0
+    ports:
+      - 13306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: start123
+      MYSQL_DATABASE: optuna
+    healthcheck:
+      test: mysqladmin ping --silent || exit 1
+    volumes:
+      - ~/mlops/data/mysql:/var/lib/mysql
+
+# https://github.com/schmidma/optuna-mnist/blob/main/docker-compose.yml
+  optuna-dashboard:
+    image: ghcr.io/optuna/optuna-dashboard:v0.15.1
+    entrypoint: 
+      - /bin/sh
+      - -c
+      - |
+        python -c 'import optuna; optuna.storages.RDBStorage("mysql+pymysql://root:start123@optuna-mysql:3306/optuna", skip_table_creation=False)'
+        optuna-dashboard --port 8080 --host 0.0.0.0 --server gunicorn mysql+pymysql://root:start123@optuna-mysql:3306/optuna
+    ports:
+      - 18080:8080
+    depends_on:
+      optuna-mysql:
+        condition: service_healthy
+volumes:
+  mysql-data:
+  postgres-data:
