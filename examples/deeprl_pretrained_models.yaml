@@ -1,0 +1,74 @@
+0:
+  title: LunarLander-v2
+  filename: deeprl_lunarlander_v2_models.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: false
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: lunar_envwrap_mobilenet_sac
+      pretty_name: SAC MobileNet
+    1:
+      name: lunar_mobilenet_ppo
+      pretty_name: PPO MobileNet
+    2:
+      name: lunar_swin_v2_sac
+      pretty_name: SAC SwinV2
+    3:
+      name: lunar_swin_v2_ppo
+      pretty_name: PPO SwinV2
+    4:
+      name: lunar_envwrap_efficentnetv2_sac
+      pretty_name: SAC EfficientNetV2
+    5:
+      name: lunar_envwrap_efficentnetv2_ppo
+      pretty_name: PPO EfficientNetV2
+    6:
+      name: lunar_envwrap_convnext_sac
+      pretty_name: SAC ConvNeXt
+    7:
+      name: lunar_envwrap_convnext_ppo
+      pretty_name: PPO ConvNeXt
+1:
+  title: CarRacing-v2
+  filename: deeprl_car_racing_v2_models.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: true
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: car_racing_envwrap_mobilenet_sac
+      pretty_name: SAC MobileNet
+    1:
+      name: car_racing_mobilenet_ppo
+      pretty_name: PPO MobileNet
+    2:
+      name: car_racing_swin_v2_sac
+      pretty_name: SAC SwinV2
+    3:
+      name: car_racing_swin_v2_ppo
+      pretty_name: PPO SwinV2
+    4:
+      name: car_racing_envwrap_efficentnetv2_sac
+      pretty_name: SAC EfficientNetV2
+    5:
+      name: car_racing_envwrap_efficentnetv2_ppo
+      pretty_name: PPO EfficientNetV2
+    6:
+      name: car_racing_envwrap_convnext_ppo
+      pretty_name: PPO ConvNeXt
+    7:
+      name: car_racing_envwrap_convnext_sac
+      pretty_name: SAC ConvNeXt

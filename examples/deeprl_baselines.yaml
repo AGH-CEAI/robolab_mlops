@@ -1,0 +1,46 @@
+0:
+  title: LunarLander-v2
+  filename: deeprl_lunarlander_v2_baselines.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: true
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: lunar_state_space
+      pretty_name: SAC-MLP (State)
+      extra_filter: "params.algo = 'sac'"
+    1:
+      name: lunar_state_space
+      pretty_name: PPO-MLP (State)
+      extra_filter: "params.algo = 'ppo'"
+    2:
+      name: lunar_vision_space_sac
+      pretty_name: SAC-CNN (Vis)
+    3:
+      name: lunar_vision_space_ppo
+      pretty_name: PPO-CNN (Vis)
+1:
+  title: CarRacing-v2
+  filename: deeprl_car_racing_v2_baselines.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: true
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' <= 3000000"
+  experiments:
+    0:
+      name: car_racing_sac
+      pretty_name: SAC-CNN (Vis)
+    1:
+      name: car_racing_ppo
+      pretty_name: PPO-CNN (Vis)

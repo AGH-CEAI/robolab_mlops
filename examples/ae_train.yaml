@@ -3,6 +3,8 @@
   filename: ae_val_lunarlander_v2_96x64px.pdf
   x_label: Steps
   y_label: Validation loss
+  x_step: 2
+  enable_legend: true
   metric_name: val/loss
   order_by: start_time
   num_of_runs: 30
@@ -18,6 +20,8 @@
   filename: ae_val_lunarlander_v2_72x48px.pdf
   x_label: Steps
   y_label: Validation loss
+  x_step: 2
+  enable_legend: true
   metric_name: val/loss
   order_by: start_time
   num_of_runs: 30

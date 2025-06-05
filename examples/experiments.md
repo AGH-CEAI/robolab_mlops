@@ -30,23 +30,23 @@ lunar_h-ae_envwrap_sac
 
 
 # DeepRL EnvWrap Pre-trained classifcation models
+lunar_envwrap_mobilenet_sac
 * lunar_mobilenet_ppo
   * 32 runs
-car_racing_mobilenet_ppo
-lunar_envwrap_mobilenet_sac
 car_racing_envwrap_mobilenet_sac
+car_racing_mobilenet_ppo
 
-car_racing_swin_v2_ppo
-car_racing_swin_v2_sac
 * lunar_swin_v2_sac
   * 20 runs
 * lunar_swin_v2_ppo
-  * 30 runs
+  * 30 runs, 3,01 M steps?
+car_racing_swin_v2_sac
+car_racing_swin_v2_ppo
 
-lunar_envwrap_efficentnetv2_ppo
 lunar_envwrap_efficentnetv2_sac
-car_racing_envwrap_efficentnetv2_ppo
+lunar_envwrap_efficentnetv2_ppo
 car_racing_envwrap_efficentnetv2_sac
+car_racing_envwrap_efficentnetv2_ppo
 
 lunar_envwrap_convnext_sac
 lunar_envwrap_convnext_ppo

@@ -1,0 +1,86 @@
+0:
+  title: LunarLander-v2
+  filename: deeprl_lunarlander_v2_aes.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: false
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: lunar_ae_envwrap_sac
+      pretty_name: SAC AE
+    1:
+      name: lunar_ae_envwrap_ppo
+      pretty_name: PPO AE
+    2:
+      name: lunar_vae_envwrap_sac
+      pretty_name: SAC VAE
+    3:
+      name: lunar_vae_envwrap_ppo
+      pretty_name: PPO VAE
+1:
+  title: LunarLander-v2
+  filename: deeprl_lunarlander_v2_hae.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  plot_min_max: true
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: lunar_h-ae_envwrap_sac
+      pretty_name: SAC H-AE
+    1:
+      name: lunar_h-ae_envwrap_ppo
+      pretty_name: PPO H-AE
+2:
+  title: CarRacing-v2
+  filename: deeprl_car_racing_v2_aes.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: car_racing_ae_envwrap_sac
+      pretty_name: SAC AE
+    1:
+      name: car_racing_ae_envwrap_ppo
+      pretty_name: PPO AE
+    2:
+      name: car_racing_vae_envwrap_sac
+      pretty_name: SAC VAE
+    3:
+      name: car_racing_vae_envwrap_ppo
+      pretty_name: PPO VAE
+3:
+  title: CarRacing-v2
+  filename: deeprl_car_racing_v2_hae.pdf
+  x_label: Steps
+  y_label: Mean reward
+  x_step: 1000000
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: car_racing_h-ae_envwrap_sac
+      pretty_name: SAC H-AE
+    1:
+      name: car_racing_h-ae_envwrap_ppo
+      pretty_name: PPO H-AE
