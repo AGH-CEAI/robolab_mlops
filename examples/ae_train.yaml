@@ -1,6 +1,6 @@
 0:
-  title: LunarLander-v2 96x64px
-  filename: ae_val_lunarlander_v2_96x64px.pdf
+  title: LunarLander-v2
+  filename: ae_val_lunarlander_v2.pdf
   x_label: Steps
   y_label: Validation loss
   x_step: 2
@@ -10,26 +10,15 @@
   num_of_runs: 30
   experiments:
     0:
-      name: vae_lunar2_train
-      pretty_name: VAE
-    1:
       name: ae_lunar2_train
-      pretty_name: AE
-1:
-  title: LunarLander-v2 72x48px
-  filename: ae_val_lunarlander_v2_72x48px.pdf
-  x_label: Steps
-  y_label: Validation loss
-  x_step: 2
-  enable_legend: true
-  metric_name: val/loss
-  order_by: start_time
-  num_of_runs: 30
-  experiments:
-    0:
+      pretty_name: AE 96x64px
+    1:
+      name: vae_lunar2_train
+      pretty_name: VAE 96x64px
+    2:
       name: h-ae_lunarlander_train
-      pretty_name: H-AE
-2:
+      pretty_name: H-AE 72x48px
+1:
   title: CarRacing-v2 96x96px
   filename: ae_val_carracing2_96x96px.pdf
   x_label: Steps
@@ -39,12 +28,12 @@
   num_of_runs: 30
   experiments:
     0:
-      name: vae_carracing2_96x96_train
-      pretty_name: VAE
-    1:
       name: ae_carracing2_96x96_train
-      pretty_name: AE
-3:
+      pretty_name: AE 96x96px
+    1:
+      name: vae_carracing2_96x96_train
+      pretty_name: VAE 96x96px
+2:
   title: CarRacing-v2 64x64px
   filename: ae_val_carracing2_64x64px.pdf
   x_label: Steps
