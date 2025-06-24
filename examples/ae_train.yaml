@@ -5,6 +5,8 @@
   y_label: Validation loss
   x_step: 2
   enable_legend: true
+  hide_x_ticks_labels: false
+  hide_y_ticks_labels: false
   metric_name: val/loss
   order_by: start_time
   num_of_runs: 30
@@ -29,10 +31,10 @@
   experiments:
     0:
       name: ae_carracing2_96x96_train
-      pretty_name: AE 96x96px
+      pretty_name: AE
     1:
       name: vae_carracing2_96x96_train
-      pretty_name: VAE 96x96px
+      pretty_name: VAE
 2:
   title: CarRacing-v2 64x64px
   filename: ae_val_carracing2_64x64px.pdf
@@ -40,6 +42,8 @@
   y_label: Validation loss
   metric_name: val/loss
   order_by: start_time
+  hide_x_ticks_labels: false
+  hide_y_ticks_labels: false
   num_of_runs: 30
   experiments:
     0:

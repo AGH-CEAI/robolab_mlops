@@ -27,11 +27,11 @@ COLORBLIND_COLORS = [
     "#0072B2",  # blue
     "#D55E00",  # vermillion/orange
     "#009E73",  # green
-    "#F0E442",  # yellow
     "#56B4E9",  # light blue
     "#CC79A7",  # purple
     "#E69F00",  # orange
     "#000000",  # black
+    "#F0E442",  # yellow
 ]
 
 
@@ -83,13 +83,17 @@ def main():
         order_by = recipe_cfg.get("order_by", None)
         num_of_runs = recipe_cfg.get("num_of_runs", None)
         plot_title = recipe_cfg.get("title", None)
-        x_label = recipe_cfg.get("x_label", None)
-        y_label = recipe_cfg.get("y_label", None)
+        x_label = recipe_cfg.get("x_label", "")
+        y_label = recipe_cfg.get("y_label", "")
         filename = recipe_cfg.get("filename", None)
         x_step = recipe_cfg.get("x_step", 2)
         enable_legend = recipe_cfg.get("enable_legend", True)
         filter_string = recipe_cfg.get("filter_string", "")
         plot_min_max = recipe_cfg.get("plot_min_max", True)
+        plot_std_dev = recipe_cfg.get("plot_std_dev", False)
+        ymin, ymax = recipe_cfg.get("y_min_max", (None, None))
+        hide_x_ticks_labels = recipe_cfg.get("hide_x_ticks_labels", False)
+        hide_y_ticks_labels = recipe_cfg.get("hide_y_ticks_labels", False)
 
         plt.figure(figsize=(5, 4))
         for exp_cnt in experiments:
@@ -149,7 +153,11 @@ def main():
             if plot_min_max:
                 min_ = pivot.min(axis=1)
                 max_ = pivot.max(axis=1)
-                plt.fill_between(mean.index, min_, max_, alpha=0.2, color=color)
+                plt.fill_between(mean.index, min_, max_, alpha=0.1, color=color)
+            
+            if plot_std_dev:
+                std = pivot.std(axis=1)
+                plt.fill_between(mean.index, mean - std, mean + std, alpha=0.2, color=color)
 
             # Set x-axis to start from the minimum step value
 
@@ -160,6 +168,13 @@ def main():
 
         plt.xlabel(x_label)
         plt.ylabel(y_label)
+        
+        # if hide_x_ticks_labels:
+        #     plt.xticks([])
+        
+        # if hide_y_ticks_labels:
+        #     plt.yticks([])
+        
         plt.grid()
         plt.title(plot_title)
         if enable_legend:
@@ -172,6 +187,7 @@ def main():
         plt.ticklabel_format(
             style="sci", axis="y", scilimits=(0, 0)
         )  # Scientific notation for y-axis
+        plt.ylim(ymin, ymax)
 
         # plt.show()
         # Save the plot and cleanup

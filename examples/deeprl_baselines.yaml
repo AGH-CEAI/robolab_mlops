@@ -1,38 +1,46 @@
 0:
-  title: LunarLander-v2
+  title: ""
   filename: deeprl_lunarlander_v2_baselines.pdf
   x_label: Steps
-  y_label: Mean reward
+  y_label: ""
   x_step: 1000000
-  plot_min_max: true
-  enable_legend: true
+  y_min_max: [-1000, 400]
+  plot_min_max: false
+  plot_std_dev: true
+  enable_legend: false
+  hide_x_ticks_labels: false
+  hide_y_ticks_labels: false
   metric_name: eval/mean_reward
   order_by: start_time
   num_of_runs: 15
   filter_string: "metrics.'time/total_timesteps' >= 3000000"
   experiments:
     0:
+      name: lunar_vision_space_sac
+      pretty_name: SAC-CNN (Vis)
+    1:
+      name: lunar_vision_space_ppo
+      pretty_name: PPO-CNN (Vis)
+    2:
       name: lunar_state_space
       pretty_name: SAC-MLP (State)
       extra_filter: "params.algo = 'sac'"
-    1:
+    3:
       name: lunar_state_space
       pretty_name: PPO-MLP (State)
       extra_filter: "params.algo = 'ppo'"
-    2:
-      name: lunar_vision_space_sac
-      pretty_name: SAC-CNN (Vis)
-    3:
-      name: lunar_vision_space_ppo
-      pretty_name: PPO-CNN (Vis)
 1:
-  title: CarRacing-v2
+  title: ""
   filename: deeprl_car_racing_v2_baselines.pdf
-  x_label: Steps
-  y_label: Mean reward
+  x_label: ""
+  y_label: ""
   x_step: 1000000
-  plot_min_max: true
-  enable_legend: true
+  y_min_max: [-200, 1000]
+  plot_min_max: false
+  plot_std_dev: true
+  enable_legend: false
+  hide_x_ticks_labels: true
+  hide_y_ticks_labels: false
   metric_name: eval/mean_reward
   order_by: start_time
   num_of_runs: 15
