@@ -1,0 +1,42 @@
+0:
+  title: "LunarLander-v2 H-AE"
+  filename: deeprl_lunarlander_v2_hae.pdf
+  x_label: "Steps"
+  y_label: "Mean reward"
+  x_step: 1000000
+  y_min_max: [-1000, 400]
+  plot_min_max: true
+  plot_std_dev: true
+  enable_legend: true
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: lunar_h-ae_envwrap_sac
+      pretty_name: SAC-H-AE
+    1:
+      name: lunar_h-ae_envwrap_ppo
+      pretty_name: PPO-H-AE
+1:
+  title: "CarRacing-v2 H-AE"
+  filename: deeprl_car_racing_v2_hae.pdf
+  x_label: "Steps"
+  y_label: "Mean reward"
+  x_step: 1000000
+  y_min_max: [-200, 1000]
+  plot_min_max: true
+  plot_std_dev: true
+  enable_legend: false
+  metric_name: eval/mean_reward
+  order_by: start_time
+  num_of_runs: 15
+  filter_string: "metrics.'time/total_timesteps' >= 3000000"
+  experiments:
+    0:
+      name: car_racing_h-ae_envwrap_sac
+      pretty_name: SAC-H-AE
+    1:
+      name: car_racing_h-ae_envwrap_ppo
+      pretty_name: PPO-H-AE

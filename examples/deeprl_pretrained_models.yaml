@@ -1,13 +1,13 @@
 0:
   title: ""
   filename: deeprl_lunarlander_v2_models.pdf
-  x_label: "Steps"
+  x_label: ""
   y_label: ""
   x_step: 1000000
   y_min_max: [-1000, 400]
   plot_min_max: false
   plot_std_dev: true
-  enable_legend: false
+  enable_legend: true
   hide_x_ticks_labels: false
   hide_y_ticks_labels: true
   metric_name: eval/mean_reward
@@ -42,13 +42,13 @@
 1:
   title: ""
   filename: deeprl_car_racing_v2_models.pdf
-  x_label: ""
+  x_label: "Steps"
   y_label: ""
   x_step: 1000000
   y_min_max: [-200, 1000]
   plot_min_max: false
   plot_std_dev: true
-  enable_legend: true
+  enable_legend: false
   hide_x_ticks_labels: true
   hide_y_ticks_labels: true
   metric_name: eval/mean_reward
