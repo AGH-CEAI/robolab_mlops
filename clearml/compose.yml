@@ -35,10 +35,14 @@ services:
     networks:
       - backend
       - frontend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
 
   elasticsearch:
     networks:
       - backend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     container_name: clearml-elastic
     environment:
       bootstrap.memory_lock: "true"
@@ -69,6 +73,8 @@ services:
     networks:
       - backend
       - frontend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     command:
     - fileserver
     container_name: clearml-fileserver
@@ -83,9 +89,12 @@ services:
     ports:
     - "8081:8081"
 
+
   mongo:
     networks:
       - backend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     container_name: clearml-mongo
     image: mongo:7.0.22
     restart: unless-stopped
@@ -97,6 +106,8 @@ services:
   redis:
     networks:
       - backend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     container_name: clearml-redis
     image: redis:7.4.1
     restart: unless-stopped
@@ -118,6 +129,8 @@ services:
     networks:
       - backend
       - frontend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
 
   async_delete:
     depends_on:
@@ -130,6 +143,8 @@ services:
     image: clearml/server:latest
     networks:
       - backend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     restart: unless-stopped
     environment:
       CLEARML_ELASTIC_SERVICE_HOST: elasticsearch
@@ -153,6 +168,8 @@ services:
   agent-services:
     networks:
       - backend
+    extra_hosts:
+      - "geonosis:192.168.0.100"
     container_name: clearml-agent-services
     image: clearml/clearml-agent-services:latest
     deploy:
