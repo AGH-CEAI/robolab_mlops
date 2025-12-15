@@ -1,5 +1,8 @@
 name: robolab-ops
 include:
+  - path: clearml/compose.yml
+    env_file:
+      - /srv/data/hosting/secrets/clearml.env
   - containers_registry/compose.yml
   - portainer/compose.yml
   - ppa_packages/compose.yml
