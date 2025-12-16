@@ -32,7 +32,7 @@ insecure = true
 ```
 
 > [!WARNING]
-> This configuration is NOT SAFE. Consider setting up proper SSL certificates before running on your machine.
+> This configuration is **not safe**. Consider setting up proper SSL certificates before running on your machine.
 
 Restart the contenerization engine:
 ```bash

@@ -1,6 +1,6 @@
 # Private Packages Repo (PPA)
 
-This module enables storing private *.deb packages used for automated container built.
+This module enables storing private `*.deb` packages used for automated container built.
 
 More [here](https://linuxconfig.org/easy-way-to-create-a-debian-package-and-local-package-repository).
 
