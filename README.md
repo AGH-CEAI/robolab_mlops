@@ -29,7 +29,7 @@ docker compose down
 
 ### Private Packages Repo (PPA)
 
-How to Set up private repo [here](./ppa_packages/README.md).
+You can find instructions for setting up a private repository [here](./ppa_packages/README.md).
 
 **Adding private repo**
 ```bash
@@ -37,7 +37,7 @@ echo "deb [trusted=yes] http://192.168.0.100/debian ./" | tee -a /etc/apt/source
 ```
 ### Containers registry
 
-[Instructions how to use self-hosted container registry.](./containers_registry/README.md)
+You can find instructions for using the self-hosted container registry [here](./containers_registry/README.md).
 
 #### Building & pushing a particular release tag
 ```bash
