@@ -19,7 +19,7 @@ Collection of all services used in Robotics Laboratory (mainly for the [Aegis ro
 # As super-user:
 export HOSTING_ROOT=/srv/data/hosting
 mkdir -p ${HOSTING_ROOT}/config ${HOSTING_ROOT}/volumes ${HOSTING_ROOT}/secrets
-# Check the service-specific README.md for further guidence.
+# Check the service-specific README.md for further guidance.
 ```
 
 ### Another start
