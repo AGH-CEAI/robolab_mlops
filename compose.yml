@@ -1,0 +1,5 @@
+name: robolab-ops
+include:
+  - containers_registry/compose.yml
+  - portainer/compose.yml
+  - ppa_packages/compose.yml

@@ -1,0 +1,10 @@
+services:
+  containers_registry:
+    image: docker.io/library/registry:2
+    # container_name: containers_registry
+    privileged: true
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - /srv/data/hosting/volumes/containers_registry:/var/lib/registry
