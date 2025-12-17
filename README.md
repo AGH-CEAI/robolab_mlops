@@ -4,11 +4,25 @@ Collection of all services used in Robotics Laboratory (mainly for the [Aegis ro
 
 ## List of services with their default ports
 
-* [containers_registry](http://localhost:5000)
-* [portainer](http://localhost:8999)
-* [ppa_packages](http://localhost:80/debian)
+* ClearML - [clearml](http://localhost:8080)
+* Containers registry - [containers_registry](http://localhost:5000)
+* Portainer - [portainer](http://localhost:8999)
+* PPA repository - [ppa_packages](http://localhost:80/debian)
+
+**Before first run, be sure to read the whole README!**
 
 ## Start all services
+
+### First start
+```bash
+# Ensure, that you have created all folders
+# As super-user:
+export HOSTING_ROOT=/srv/data/hosting
+mkdir -p ${HOSTING_ROOT}/config ${HOSTING_ROOT}/volumes ${HOSTING_ROOT}/secrets
+# Check the service-specific README.md for further guidance.
+```
+
+### Another start
 
 ```bash
 # In the main directory

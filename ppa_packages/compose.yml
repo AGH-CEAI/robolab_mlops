@@ -7,4 +7,4 @@ services:
       - 80:80
     restart: always
     volumes:
-      - /srv/data/hosting/volumes/ppa_packages:/var/www/html/debian
+      - ${VOLUMES_ROOT}/ppa_packages:/var/www/html/debian
