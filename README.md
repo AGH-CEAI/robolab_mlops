@@ -13,6 +13,17 @@ Collection of all services used in Robotics Laboratory (mainly for the [Aegis ro
 
 ## Start all services
 
+### First start
+```bash
+# Ensure, that you have created all folders
+# As super-user:
+export HOSTING_ROOT=/srv/data/hosting
+mkdir -p ${HOSTING_ROOT}/config ${HOSTING_ROOT}/volumes ${HOSTING_ROOT}/secrets
+# Check the service-specific README.md for further guidence.
+```
+
+### Another start
+
 ```bash
 # In the main directory
 docker compose up -d
