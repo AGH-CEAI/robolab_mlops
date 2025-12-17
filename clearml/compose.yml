@@ -7,9 +7,9 @@ services:
     image: clearml/server:latest
     restart: unless-stopped
     volumes:
-    - /srv/data/hosting/volumes/clearml/logs:/var/log/clearml
-    - /srv/data/hosting/volumes/clearml/config:/opt/clearml/config
-    - /srv/data/hosting/volumes/clearml/data/fileserver:/mnt/fileserver
+    - ${VOLUMES_ROOT}/clearml/logs:/var/log/clearml
+    - ${VOLUMES_ROOT}/clearml/config:/opt/clearml/config
+    - ${VOLUMES_ROOT}/clearml/data/fileserver:/mnt/fileserver
     depends_on:
       - redis
       - mongo
@@ -66,7 +66,7 @@ services:
     image: elasticsearch:8.17.0
     restart: unless-stopped
     volumes:
-      - /srv/data/hosting/volumes/clearml/data/elastic_7:/usr/share/elasticsearch/data
+      - ${VOLUMES_ROOT}/clearml/data/elastic_7:/usr/share/elasticsearch/data
       - /usr/share/elasticsearch/logs
 
   fileserver:
@@ -83,9 +83,9 @@ services:
       CLEARML__fileserver__delete__allow_batch: "true"
     restart: unless-stopped
     volumes:
-    - /srv/data/hosting/volumes/clearml/logs:/var/log/clearml
-    - /srv/data/hosting/volumes/clearml/data/fileserver:/mnt/fileserver
-    - /srv/data/hosting/volumes/clearml/config:/opt/clearml/config
+    - ${VOLUMES_ROOT}/clearml/logs:/var/log/clearml
+    - ${VOLUMES_ROOT}/clearml/data/fileserver:/mnt/fileserver
+    - ${VOLUMES_ROOT}/clearml/config:/opt/clearml/config
     ports:
     - "8081:8081"
 
@@ -100,8 +100,8 @@ services:
     restart: unless-stopped
     command: --setParameter internalQueryMaxBlockingSortMemoryUsageBytes=196100200
     volumes:
-    - /srv/data/hosting/volumes/clearml/data/mongo_4/db:/data/db
-    - /srv/data/hosting/volumes/clearml/data/mongo_4/configdb:/data/configdb
+    - ${VOLUMES_ROOT}/clearml/data/mongo_4/db:/data/db
+    - ${VOLUMES_ROOT}/clearml/data/mongo_4/configdb:/data/configdb
 
   redis:
     networks:
@@ -112,7 +112,7 @@ services:
     image: redis:7.4.1
     restart: unless-stopped
     volumes:
-    - /srv/data/hosting/volumes/clearml/data/redis:/data
+    - ${VOLUMES_ROOT}/clearml/data/redis:/data
 
   webserver:
     command:
@@ -162,8 +162,8 @@ services:
       - --fileserver-host
       - http://fileserver:8081
     volumes:
-      - /srv/data/hosting/volumes/clearml/logs:/var/log/clearml
-      - /srv/data/hosting/volumes/clearml/config:/opt/clearml/config
+      - ${VOLUMES_ROOT}/clearml/logs:/var/log/clearml
+      - ${VOLUMES_ROOT}/clearml/config:/opt/clearml/config
 
   agent-services:
     networks:
@@ -198,7 +198,7 @@ services:
       SHUTDOWN_IF_NO_ACCESS_KEY: 1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /srv/data/hosting/volumes/clearml/agent:/root/.clearml
+      - ${VOLUMES_ROOT}/clearml/agent:/root/.clearml
     depends_on:
       - apiserver
     entrypoint: >
