@@ -1,5 +1,9 @@
 # robolab_mlops
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
+
 Collection of all services used in Robotics Laboratory (mainly for the [Aegis robot](https://github.com/AGH-CEAI/aegis_ros)).
 
 ## List of services with their default ports

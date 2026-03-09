@@ -4,7 +4,7 @@ services:
     command:
     - apiserver
     container_name: clearml-apiserver
-    image: clearml/server:latest
+    image: clearml/server:2.4.0
     restart: unless-stopped
     volumes:
     - ${VOLUMES_ROOT}/clearml/logs:/var/log/clearml
@@ -63,7 +63,7 @@ services:
       nofile:
         soft: 65536
         hard: 65536
-    image: elasticsearch:8.17.0
+    image: elasticsearch:8.19.9
     restart: unless-stopped
     volumes:
       - ${VOLUMES_ROOT}/clearml/data/elastic_7:/usr/share/elasticsearch/data
@@ -78,7 +78,7 @@ services:
     command:
     - fileserver
     container_name: clearml-fileserver
-    image: clearml/server:latest
+    image: clearml/server:2.4.0
     environment:
       CLEARML__fileserver__delete__allow_batch: "true"
     restart: unless-stopped
@@ -96,7 +96,7 @@ services:
     extra_hosts:
       - "geonosis:192.168.0.100"
     container_name: clearml-mongo
-    image: mongo:7.0.22
+    image: mongo:8.0.15
     restart: unless-stopped
     command: --setParameter internalQueryMaxBlockingSortMemoryUsageBytes=196100200
     volumes:
@@ -120,7 +120,7 @@ services:
     container_name: clearml-webserver
     # environment:
     #  CLEARML_SERVER_SUB_PATH : clearml-web # Allow Clearml to be served with a URL path prefix.
-    image: clearml/server:latest
+    image: clearml/server:2.4.0
     restart: unless-stopped
     depends_on:
       - apiserver
@@ -140,7 +140,7 @@ services:
       - elasticsearch
       - fileserver
     container_name: clearml-async_delete
-    image: clearml/server:latest
+    image: clearml/server:2.4.0
     networks:
       - backend
     extra_hosts:
@@ -171,7 +171,7 @@ services:
     extra_hosts:
       - "geonosis:192.168.0.100"
     container_name: clearml-agent-services
-    image: clearml/clearml-agent-services:latest
+    image: clearml/clearml-agent-services:1.3.6
     deploy:
       restart_policy:
         condition: on-failure
