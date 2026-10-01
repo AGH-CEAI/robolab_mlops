@@ -120,6 +120,9 @@ services:
     container_name: clearml-webserver
     # environment:
     #  CLEARML_SERVER_SUB_PATH : clearml-web # Allow Clearml to be served with a URL path prefix.
+    environment:
+      WEBSERVER__fileBaseUrl: "http://192.168.0.100:8081"
+      WEBSERVER__useFilesProxy: "true"
     image: clearml/server:2.4.0
     restart: unless-stopped
     depends_on:
