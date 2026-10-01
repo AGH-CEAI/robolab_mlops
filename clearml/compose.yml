@@ -30,8 +30,9 @@ services:
       CLEARML__services__async_urls_delete__fileserver__url_prefixes: "[${CLEARML_FILES_HOST:-}]"
       CLEARML__secure__credentials__services_agent__user_key: ${CLEARML_AGENT_ACCESS_KEY:-}
       CLEARML__secure__credentials__services_agent__user_secret: ${CLEARML_AGENT_SECRET_KEY:-}
-    ports:
-    - "8008:8008"
+    # published by the apiserver-proxy, which rewrites the files server URLs
+    # ports:
+    # - "8008:8008"
     networks:
       - backend
       - frontend
@@ -120,10 +121,16 @@ services:
     container_name: clearml-webserver
     # environment:
     #  CLEARML_SERVER_SUB_PATH : clearml-web # Allow Clearml to be served with a URL path prefix.
+    environment:
+      WEBSERVER__fileBaseUrl: "http://192.168.0.100:8081"
+      WEBSERVER__useFilesProxy: "true"
+      # the WebApp calls the API via this nginx (/api), route it through the URL rewriting proxy
+      NGINX_APISERVER_ADDRESS: "http://apiserver-proxy:8008"
     image: clearml/server:2.4.0
     restart: unless-stopped
     depends_on:
       - apiserver
+      - apiserver-proxy
     ports:
     - "8080:80"
     networks:
@@ -131,6 +138,19 @@ services:
       - frontend
     extra_hosts:
       - "geonosis:192.168.0.100"
+
+  apiserver-proxy:
+    container_name: clearml-apiserver-proxy
+    image: nginx:1.27-alpine
+    restart: unless-stopped
+    depends_on:
+      - apiserver
+    ports:
+    - "8008:8008"
+    networks:
+      - frontend
+    volumes:
+      - ./apiserver-proxy.conf:/etc/nginx/conf.d/default.conf:ro
 
   async_delete:
     depends_on:
